@@ -12,9 +12,11 @@ const propFilePath = path.join(
 );
 
 const rename = async () => {
-  await fs.rename(wrongFilePath, propFilePath).catch((error) => {
-    console.error("FS operation failed", error);
-  });
+  try {
+    await fs.rename(wrongFilePath, propFilePath);
+  } catch (error) {
+    throw new Error("FS operation failed");
+  }
 };
 
 await rename();

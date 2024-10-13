@@ -3,11 +3,12 @@ import fs from "node:fs/promises";
 const filePath = path.join(import.meta.dirname, "files", "fileToRead.txt");
 
 const read = async () => {
-  console.log(
-    await fs
-      .readFile(filePath, "utf-8")
-      .catch((error) => console.error("FS operation failed", error))
-  );
+  try {
+    const data = await fs.readFile(filePath, "utf-8");
+    console.log(data);
+  } catch (error) {
+    throw new Error("FS operation failed");
+  }
 };
 
 await read();
