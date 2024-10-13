@@ -1,10 +1,7 @@
 import path from "node:path";
-import url from "node:url";
 import os from "os";
 import { Worker } from "worker_threads";
-
-const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
-const filePath = path.join(__dirname, "worker.js");
+const filePath = path.join(import.meta.dirname, "worker.js");
 
 const createWorker = (workerData) => {
   return new Promise((resolve, reject) => {

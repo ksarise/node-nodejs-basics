@@ -1,13 +1,9 @@
 import path from "path";
-import fs from "node:fs/promises";
-import url from "node:url";
 import { release, version } from "os";
 import { createServer as createServerHttp } from "http";
 import { createRequire } from "node:module";
 import "./files/c.js";
-
-const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
-const filePath = path.join(__dirname, "esm.mjs");
+const filePath = path.join(import.meta.dirname, "esm.mjs");
 const require = createRequire(import.meta.url);
 
 const random = Math.random();
@@ -25,7 +21,7 @@ console.log(`Version ${version()}`);
 console.log(`Path segment separator is "${path.sep}"`);
 
 console.log(`Path to current file is ${filePath}`);
-console.log(`Path to current directory is ${__dirname}`);
+console.log(`Path to current directory is ${import.meta.dirname}`);
 
 const myServer = createServerHttp((_, res) => {
   res.end("Request accepted");

@@ -1,4 +1,3 @@
-import { log } from "node:console";
 import { env } from "node:process";
 
 const parseEnv = () => {
